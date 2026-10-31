@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Parto Diary</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#1F6F78" />
+    <!-- The loading sign (src/ui/DiaryLoader.tsx). Kept here so it shows before the script bundle and styles.css arrive. -->
+    <style>
+      .diary-loader { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 12px 0; color: var(--ink-2, #5B6764); font: 500 13.5px/1.4 "Inter Variable", "Inter", "Segoe UI", system-ui, sans-serif; }
+      .diary-loader svg { width: 112px; height: auto; overflow: visible; }
+      .diary-loader.lg svg { width: 168px; }
+      .diary-loader.lg { gap: 14px; font-size: 14.5px; }
+      .diary-loader .dl-ink { fill: none; stroke: var(--accent, #1F6F78); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 100 102; stroke-dashoffset: 100; }
+      .diary-loader .dl-ink1 { animation: dl-ink1 2.6s linear infinite; }
+      .diary-loader .dl-ink2 { animation: dl-ink2 2.6s linear infinite; }
+      .diary-loader .dl-pen { animation: dl-pen 2.6s linear infinite; }
+      .diary-loader .dl-pen-hand { animation: dl-hand .26s ease-in-out infinite alternate; }
+      .diary-loader .dl-nib { fill: var(--ink, #101917); }
+      .diary-loader .dl-barrel { fill: var(--ink, #101917); }
+      .diary-loader .dl-band { fill: #F2B200; }
+      @keyframes dl-ink1 { 0% { stroke-dashoffset: 100; opacity: 1; } 40% { stroke-dashoffset: 0; } 88% { opacity: 1; } 97%, 100% { stroke-dashoffset: 0; opacity: 0; } }
+      @keyframes dl-ink2 { 0%, 47% { stroke-dashoffset: 100; opacity: 1; } 80% { stroke-dashoffset: 0; } 88% { opacity: 1; } 97%, 100% { stroke-dashoffset: 0; opacity: 0; } }
+      @keyframes dl-pen {
+        0% { transform: translate(28px, 28px); } 40% { transform: translate(96px, 27px); }
+        43% { transform: translate(62px, 22px); } 47% { transform: translate(28px, 44px); }
+        80% { transform: translate(71px, 44px); } 88% { transform: translate(84px, 34px); }
+        100% { transform: translate(28px, 28px); }
+      }
+      @keyframes dl-hand { from { transform: translateY(-1.2px); } to { transform: translateY(1.2px); } }
+      @media (prefers-reduced-motion: reduce) {
+        .diary-loader .dl-ink1, .diary-loader .dl-ink2, .diary-loader .dl-pen-hand { animation: none; stroke-dashoffset: 0; }
+        .diary-loader .dl-pen { animation: none; transform: translate(71px, 44px); }
+        .diary-loader svg { animation: dl-breathe 1.6s ease-in-out infinite alternate; }
+        @keyframes dl-breathe { from { opacity: .45; } to { opacity: 1; } }
+      }
+      #root > .boot { min-height: 100vh; display: grid; place-items: center; background: #F4F6F5; }
+      @media (prefers-color-scheme: dark) { #root > .boot { background: #0D1312; } #root > .boot .dl-ink { stroke: #55B4BC; } #root > .boot .dl-nib, #root > .boot .dl-barrel { fill: #E8EFED; } }
+    </style>
+    <script type="module" crossorigin src="/assets/index-A6uz_Ob0.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dcx1kd4h.css">
+  </head>
+  <body>
+    <!-- Static copy of <DiaryLoader size="lg" /> while the scripts load; React replaces it. -->
+    <div id="root"><div class="boot"><div class="diary-loader lg" role="status"><svg viewBox="20 -8 104 64" aria-hidden="true"><path class="dl-ink dl-ink1" pathLength="100" d="M28 28c4-8 8-8 8 0s4 6 8-2c3-6 7-6 6 2c-1 5 5 4 8-3c2-5 6-5 6 1c0 5 6 5 9-1c2-4 6-4 7 2c1 4 5 3 8-1s5 3 8-1" /><path class="dl-ink dl-ink2" pathLength="100" d="M28 44c3-7 7-7 7 0s5 5 8-2c2-5 6-5 6 1c0 5 5 5 8 0c2-4 6-4 6 1s4 4 7 0" /><g class="dl-pen"><g class="dl-pen-hand"><path class="dl-nib" d="M0 0L2.5-6L6.5-4Z" /><path class="dl-barrel" d="M2.5-6L17-33L21-31L6.5-4Z" /><path class="dl-band" d="M14.3-28L16.4-32L20.4-30L18.3-26Z" /></g></g></svg></div></div></div>
+  </body>
+</html>
