@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Android-App – Parto Diary</title>
+<link rel="icon" href="favicon.svg">
+<!-- Short link for phones (projects.parto.at/android.html, test-projects.parto.at/android.html): the web app's own download
+     block offers several installers; this page only offers the APK that fits the host (test or production). -->
+<style>
+  :root { --ink: #17201E; --text: #3A4643; --muted: #6B7774; --line: #E3E8E7; --accent: #1F6F78; --page: #F2F4F3; --card: #fff; }
+  @media (prefers-color-scheme: dark) { :root { --ink: #EEF2F1; --text: #C9D2D0; --muted: #93A09D; --line: #2A3331; --accent: #5FB3BC; --page: #111716; --card: #182120; } }
+  body { margin: 0; background: var(--page); color: var(--text); font: 16px/1.55 Inter, -apple-system, 'Segoe UI', Roboto, sans-serif; }
+  main { max-width: 520px; margin: 0 auto; padding: 32px 16px 64px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
+  h1 { color: var(--ink); font-size: 24px; margin: 0 0 4px; } .sub { color: var(--muted); margin: 0 0 20px; }
+  .btn { display: block; text-align: center; background: var(--accent); color: #fff; text-decoration: none; font-weight: 600;
+         font-size: 18px; padding: 14px 16px; border-radius: 10px; }
+  .test { display: none; background: #B4531A; color: #fff; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 6px; margin-left: 6px; vertical-align: middle; }
+  ol { padding-left: 20px; margin: 20px 0 0; } li { margin: 6px 0; } a { color: var(--accent); }
+  .foot { color: var(--muted); font-size: 13px; margin-top: 16px; } .other { display: none; }
+</style>
+</head>
+<body><main>
+<div class="card">
+  <h1>Parto Diary <span class="test" id="test">TEST</span></h1>
+  <p class="sub" id="sub">Android-App · Zeiterfassung am Handy</p>
+  <a class="btn" id="dl" href="https://github.com/LetzManuel/professional-diary-releases/releases/download/android/ProfessionalDiary.apk">Android-App laden</a>
+  <p class="other" id="other">Diese Seite ist für Android-Handys. Für Windows und macOS: <a href="./">Parto Diary öffnen</a> › Apps herunterladen.</p>
+  <ol>
+    <li>Auf <b>Android-App laden</b> tippen.</li>
+    <li>Ist der Download fertig, in der Meldung <b>Öffnen</b> tippen.</li>
+    <li>Fragt Android nach <b>Unbekannte Apps installieren</b>: für den Browser erlauben, zurück und <b>Installieren</b>.</li>
+    <li>Die App öffnen und mit derselben E-Mail anmelden wie am PC.</li>
+  </ol>
+  <p class="foot">Eine neue Version wird genauso über die alte installiert, die Daten bleiben. Zeigt der Browser „Datei kann nicht geöffnet werden“, die Datei neu laden und direkt aus der Meldung öffnen. ·
+    <a href="./">Web-Version</a> · <a href="privacy.html">Datenschutz</a> · <a href="impressum.html">Impressum</a></p>
+</div>
+</main>
+<script>
+  // Same page in both web builds: the test site hands out the test app (installs next to the real one, test cloud).
+  if (/^test-|localhost|127\.0\.0\.1/.test(location.hostname)) {
+    document.getElementById('dl').href = 'https://github.com/LetzManuel/professional-diary-test/releases/download/android/ProfessionalDiary-Test.apk';
+    document.getElementById('test').style.display = 'inline-block';
+    document.getElementById('sub').textContent = 'Android-Test-App · installiert sich neben der echten App und nutzt die Test-Cloud';
+    document.title = 'Android-Test-App – Parto Diary';
+  }
+  if (!/Android/i.test(navigator.userAgent)) document.getElementById('other').style.display = 'block';
+</script>
+</body>
+</html>
